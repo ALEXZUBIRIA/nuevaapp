@@ -24,20 +24,53 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-}
-
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
     return Scaffold(
-      body: Center( 
-        child: Text('Hello World'), 
+      appBar: AppBar(
+        title: Text(' widgets básicos, Text, Row, Column, Stack y Container'),
+      ),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.all(20),
+          color: Colors.orange[100],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Texto principal',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text('este es un texto'),
+                  Text('este es un texto'),
+                  Text('este es un texto'),
+                ],
+              ),
+              SizedBox(height: 20),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.blue,
+                  ),
+                  Text(
+                    'contenedor',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+

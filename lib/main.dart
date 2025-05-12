@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:firebase_core/firebase_core.dart'; 
+import 'firebase_options.dart';
+ 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  print('✅ Firebase inicializado correctamente');
+  runApp(const MyApp());
+}
 
-void main() => runApp(const MyApp());
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -74,6 +85,7 @@ class _MyAppState extends State<MyApp> {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
+                        // ignore: deprecated_member_use
                         color: Colors.black.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -84,6 +96,7 @@ class _MyAppState extends State<MyApp> {
                               itemBuilder: (context, index) {
                                 final peli = peliculas[index];
                                 return Card(
+                                  // ignore: deprecated_member_use
                                   color: Colors.white.withOpacity(0.8),
                                   child: ListTile(
                                     title: Text(peli['title']),
